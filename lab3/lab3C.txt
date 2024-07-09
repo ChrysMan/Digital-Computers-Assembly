@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_NUM 101
+void func(char array[]);
+
+int main()
+{
+    char string_array[MAX_NUM];
+
+    printf("Give me an array: ");
+    fgets(string_array,100,stdin);
+    func(string_array);
+    return 0;
+}
+
+void func(char array[])
+{
+    char currentletter;
+    char newletter;
+    int i;
+    for (i=0;i<strlen(array);i++){
+        currentletter=array[i];
+        if((currentletter > 64) && (currentletter < 91)){
+            newletter = currentletter + 32;
+            printf("%c", newletter);
+        }
+        else if(currentletter == 32){
+            if(array[i+1] != 32){
+	        newletter = currentletter;
+                printf("%c", newletter);
+            }
+	    else continue;
+        }
+        else if ((currentletter > 96) && (currentletter < 123)){
+	        newletter = currentletter;
+                printf("%c", newletter);
+            }
+        else if((currentletter > 47) && (currentletter < 58)){
+	        newletter = currentletter;
+                printf("%c", newletter);
+            }
+        else {
+            if(newletter != 32){
+            newletter = 32;
+            printf("%c", newletter);
+           }
+           else continue;
+        }
+    }
+    return 0;
+}
